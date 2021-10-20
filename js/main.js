@@ -10,13 +10,27 @@
     slash = "/";
     path = path.substring(8, path.length - 11);
   }
-
+  // alert(path.slice(40, path.length));
   path += "/presets";
-  //   alert(path);
-  //   alert(path.slice(40, path.length));
   getPreviewNames(path);
 })();
 
+function getOS() {
+  var userAgent = window.navigator.userAgent,
+    platform = window.navigator.platform,
+    macosPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"],
+    windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"],
+    os = null;
+
+  if (macosPlatforms.indexOf(platform) != -1) {
+    os = "MAC";
+  } else if (windowsPlatforms.indexOf(platform) != -1) {
+    os = "WIN";
+  }
+  return os;
+}
+
+// get filenames of preview content
 function getPreviewNames(thisPath) {
   var presetNames = undefined;
   var csInterface = new CSInterface();
@@ -24,13 +38,14 @@ function getPreviewNames(thisPath) {
     presetNames = JSON.parse(res);
   });
 
-  // due to async nature of loading this may take anywhere from 200ms to 20000ms
-  // change the timeout depending on the size of the "presets" folder
+  // due to async nature of loading this may take anywhere from 200ms to 2000ms
+  // change the timeout depending on the size (gb) of the "presets" folder
   setTimeout(function () {
     generatePreviews(presetNames);
   }, 200);
 }
 
+// generate the preview content
 function generatePreviews(names) {
   var previewSection = document.getElementById("previewSection");
   var thisImage;
@@ -44,6 +59,8 @@ function generatePreviews(names) {
   }
 }
 
+// converts {filename}.png to {filename}.mp4
+// swaps the html element to load the .mp4
 function mouseHover(currentImage) {
   var parent = currentImage.parentNode;
   var video = document.createElement("VIDEO");
@@ -59,6 +76,8 @@ function mouseHover(currentImage) {
   parent.insertBefore(video, parent.childNodes[0]);
 }
 
+// converts {filename}.mp4 to {filename}.png
+// swaps the html element back to load the .png
 function mouseUnhover(currentVideo) {
   var parent = currentVideo.parentNode;
   var image = document.createElement("IMG");
@@ -69,19 +88,4 @@ function mouseUnhover(currentVideo) {
   image.setAttribute("id", tempPath);
   image.setAttribute("onmouseover", "moveHover(this)");
   parent.insertBefore(image, parent.childNodes[0]);
-}
-
-function getOS() {
-  var userAgent = window.navigator.userAgent,
-    platform = window.navigator.platform,
-    macosPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"],
-    windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"],
-    os = null;
-
-  if (macosPlatforms.indexOf(platform) != -1) {
-    os = "MAC";
-  } else if (windowsPlatforms.indexOf(platform) != -1) {
-    os = "WIN";
-  }
-  return os;
 }
