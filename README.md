@@ -1,2 +1,4 @@
-# Extension Testing
- Bare bones extension for tutorial and testing use!
+# AEP Handler
+ Bare bones extension for importing and previewing .aep files.
+
+ Built for .nomedia (LTD)
