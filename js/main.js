@@ -34,7 +34,7 @@ function getOS() {
 function getPreviewNames(thisPath) {
   var presetNames = undefined;
   var csInterface = new CSInterface();
-  csInterface.evalScript("getPreviewPaths(" + thisPath + ")", function (res) {
+  csInterface.evalScript('getPreviewPaths("' + thisPath +'")', function(res){
     presetNames = JSON.parse(res);
   });
 

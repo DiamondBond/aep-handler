@@ -1,4 +1,4 @@
-﻿//@#include "json2.js"
+﻿#include "json2.js"
 
 function getPreviewPaths(path) {
   var thisFolder = Folder(path);
