@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtensionManifest
 	Version="4.0"
-	ExtensionBundleId="com.extension.testing"
+	ExtensionBundleId="com.aep.handler"
 	ExtensionBundleVersion="1.0.0"
-	ExtensionBundleName="Extension Testing"
+	ExtensionBundleName="AEP Handler"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<ExtensionList>
-		<Extension Id="com.extension.testing.panel" Version="1.0" />
+		<Extension Id="com.aep.handler.panel" Version="1.0" />
 	</ExtensionList>
 
 	<ExecutionEnvironment>
@@ -25,7 +25,7 @@
 </ExecutionEnvironment>
 
 	<DispatchInfoList>
-		<Extension Id="com.extension.testing.panel">
+		<Extension Id="com.aep.handler.panel">
 			<DispatchInfo>
 
 			<Resources>
@@ -40,7 +40,7 @@
 			<UI>
 
 				<Type>Panel</Type>
-				<Menu>Extension Testing</Menu>
+				<Menu>AEP Handler</Menu>
 
 				<Geometry>
 					<Size>
