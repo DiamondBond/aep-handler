@@ -45,8 +45,30 @@ function generatePreviews(names) {
 }
 
 function mouseHover(currentImage) {
-  alert("mouse hovered");
-  alert(currentImage.id);
+  var parent = currentImage.parentNode;
+  var video = document.createElement("VIDEO");
+  var tempPath = currentImage.id;
+  if (tempPath.lastIndexOf(".") < tempPath.length - 1) {
+    tempPath = tempPath.slice(0, tempPath.length - 3);
+  }
+  parent.removeChild(currentImage);
+  video.src = tempPath += "mp4";
+  video.setAttribute("id", tempPath);
+  video.setAttribute("onmouseout", "mouseUnhover(this)");
+  video.play();
+  parent.insertBefore(video, parent.childNodes[0]);
+}
+
+function mouseUnhover(currentVideo) {
+  var parent = currentVideo.parentNode;
+  var image = document.createElement("IMG");
+  var tempPath = currentVideo.id;
+  tempPath = tempPath.slice(0, tempPath.length - 3);
+  parent.removeChild(currentVideo);
+  image.src = tempPath += "png";
+  image.setAttribute("id", tempPath);
+  image.setAttribute("onmouseover", "moveHover(this)");
+  parent.insertBefore(image, parent.childNodes[0]);
 }
 
 function getOS() {
