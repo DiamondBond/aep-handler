@@ -23,7 +23,7 @@ Copy your preview content to {this_extensions_folder}/presets/
 
 Launch the extension from the extension menu in adobe after effects.
 
-## Tree Overview
+### Tree Overview
 
 ```sh
 .
@@ -48,12 +48,12 @@ Launch the extension from the extension menu in adobe after effects.
 7 directories, 10 files
 ```
 
-## css/styles.css
+### css/styles.css
 
 Stylesheet.
 You can adjust the previewContent div frame size & background-color within #previewSection (styles.css:27)
 
-## CSXS/Manifest
+### CSXS/Manifest
 
 Contains all the relevant information to be loaded by adobe after effects.
 
@@ -62,11 +62,11 @@ com.aep.handler
 AEP Handler
 ```
 
-## index.html
+### index.html
 
 The layout of the extension. You can adjust dimensions here.
 
-## js/main.js
+### js/main.js
 
 This get's the filenames of preview content and then converts them to .mp4 for mouse hover preview and back to .png when nothing is happening (on mouse unhover).
 
