@@ -11,11 +11,25 @@
     path = path.substring(8, path.length - 11);
   }
 
-  alert(path);
-  generatePreviews();
+  path += "/presets";
+  //   alert(path);
+  //   alert(path.slice(40, path.length));
+  generatePreviews(path);
 })();
 
-function generatePreviews() {}
+function generatePreviews(thisPath) {
+  var presetNames = undefined;
+  var csInterface = new CSInterface();
+  csInterface.evalScript("getPreviewPaths(" + thisPath + ")", function (res) {
+    presetNames = JSON.parse(res);
+  });
+
+  // due to async nature of loading this may take anywhere from 200ms to 20000ms
+  // change the timeout depending on the size of the "presets" folder
+  setTimeout(function () {
+    alert(presetNames);
+  }, 200);
+}
 
 function getOS() {
   var userAgent = window.navigator.userAgent,
