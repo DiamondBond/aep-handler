@@ -7,7 +7,9 @@ function getPreviewPaths(path) {
     var fileNames = [];
 
     for(var i = 0; i < files.length; i++){
-        fileNames.push(files[i].fsName);
+        if(files[i].name.indexOf(".png") != -1){
+            fileNames.push(files[i].fsName);
+        }
     }
 
     return JSON.stringify(fileNames);

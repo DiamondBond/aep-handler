@@ -14,10 +14,10 @@
   path += "/presets";
   //   alert(path);
   //   alert(path.slice(40, path.length));
-  generatePreviews(path);
+  getPreviewNames(path);
 })();
 
-function generatePreviews(thisPath) {
+function getPreviewNames(thisPath) {
   var presetNames = undefined;
   var csInterface = new CSInterface();
   csInterface.evalScript("getPreviewPaths(" + thisPath + ")", function (res) {
@@ -27,8 +27,26 @@ function generatePreviews(thisPath) {
   // due to async nature of loading this may take anywhere from 200ms to 20000ms
   // change the timeout depending on the size of the "presets" folder
   setTimeout(function () {
-    alert(presetNames);
+    generatePreviews(presetNames);
   }, 200);
+}
+
+function generatePreviews(names) {
+  var previewSection = document.getElementById("previewSection");
+  var thisImage;
+
+  for (var i = 0; i < names.length; i++) {
+    thisImage = document.createElement("IMG");
+    thisImage.src = names[i];
+    thisImage.setAttribute("id", names[i].slice(0, names[i].length - 3));
+    thisImage.setAttribute("onmouseover", "mouseHover(this)");
+    previewSection.appendChild(thisImage);
+  }
+}
+
+function mouseHover(currentImage) {
+  alert("mouse hovered");
+  alert(currentImage.id);
 }
 
 function getOS() {
