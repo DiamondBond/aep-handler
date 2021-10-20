@@ -25,13 +25,14 @@ body {
 }
 
 #previewSection {
-  width: 400px;
-  height: 355px;
+  width: 600px;
+  height: 500px;
   display: inline-block;
+  background-color: darkgray;
 }
 
-#mainButton {
-}
+/* #mainButton {
+} */
 
 /* Let's get this party started */
 ::-webkit-scrollbar {

@@ -10,9 +10,12 @@
     slash = "/";
     path = path.substring(8, path.length - 11);
   }
+
+  alert(path);
+  generatePreviews();
 })();
 
-function goIntoJSX() {}
+function generatePreviews() {}
 
 function getOS() {
   var userAgent = window.navigator.userAgent,
